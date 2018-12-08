@@ -95,14 +95,14 @@ class SendDailyEmail_Misumi1 extends Command
 
         if(count(Mail::failures()) > 0)
         {
-            $content = 'Failed to send Email!';
+            $status = 1;
         }
         else
         {
-            $content = 'Success to send Email!';
+            $status = 0;
         }
 
-        /*
+
         $SendDailyEmail = new SendDailyEmail();
 
         $email = json_encode($email);
@@ -112,15 +112,14 @@ class SendDailyEmail_Misumi1 extends Command
         $SendDailyEmail->file_url = $fileUrl;
         $SendDailyEmail->mime_type = $mimeType;
         $SendDailyEmail->extension = $extension;
-        $SendDailyEmail->content = $content;
-        $SendDailyEmail->status = 1;
+        $SendDailyEmail->status = $status;
         $SendDailyEmail->email_from = $email_from;
         $SendDailyEmail->email = $email;
         $SendDailyEmail->email_cc = $email_cc;
         $SendDailyEmail->email_bcc = $email_bcc;
 
         $SendDailyEmail->save();
-        */
+
 
         return response(array(
             'Status' => 'Success'
