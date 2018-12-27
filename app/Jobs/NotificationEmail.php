@@ -14,13 +14,18 @@ class NotificationEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $data;
-    protected $email_from;
-    protected $email;
-    protected $email_cc;
-    protected $email_bcc;
-    protected $subject_name;
-    protected $campaign_name;
+    public $data;
+    public $name;
+    public $email_from;
+    public $email;
+    public $email_cc;
+    public $email_bcc;
+    public $subject_name;
+    public $campaign_name;
+    public $channel_name;
+    public $issue;
+    public $link_campaign;
+    public $link_channel;
     public $timeout = 120;
     public $tries = 3;
 
@@ -32,12 +37,17 @@ class NotificationEmail implements ShouldQueue
     public function __construct($data)
     {
         //
+        $this->name   = $data->name;
         $this->email_from   = $data->email_from;
         $this->email        = $data->email;
         $this->email_cc     = $data->email_cc;
         $this->email_bcc    = $data->email_bcc;
         $this->subject_name    = $data->subject_name;
         $this->campaign_name    = $data->campaign_name;
+        $this->channel_name    = $data->channel_name;
+        $this->issue    = $data->issue;
+        $this->link_campaign    = $data->link_campaign;
+        $this->link_channel    = $data->link_channel;
     }
 
     /**
@@ -49,15 +59,28 @@ class NotificationEmail implements ShouldQueue
     {
         //
         $data = [
+            'name' => $this->name,
             'email_from' => $this->email_from,
             'email' => $this->email,
             'email_cc' => $this->email_cc,
             'email_bcc' => $this->email_bcc,
             'subject_name' => $this->subject_name,
-            'campaign_name' => $this->campaign_name
+            'campaign_name' => $this->campaign_name,
+            'channel_name' => $this->channel_name,
+            'issue' => $this->issue,
+            'link_campaign' => $this->link_campaign,
+            'link_channel' => $this->link_channel
         ];
 
-       Mail::send('email.sendNotificationEmail', array("campaign_name" => $data["campaign_name"]), function ($message) use ($data)
+        Mail::send('email.sendNotificationEmail', array(
+                "name" => $data["name"],
+                "subject_name" => $data["subject_name"],
+                "campaign_name" => $data["campaign_name"],
+                "channel_name" => $data["channel_name"],
+                "issue" => $data["issue"],
+                "link_campaign" => $data["link_campaign"],
+                "link_channel" => $data["link_channel"]
+            ), function ($message) use ($data)
         {
             $message->from($data['email_from']);
             $message->to($data['email']);
@@ -69,7 +92,7 @@ class NotificationEmail implements ShouldQueue
             {
                 $message->bcc($data['email_bcc']);
             }
-            $message->subject($data['subject_name'].' - '.date("Ymd"));
+            $message->subject($data['subject_name'].' - '.date("Y-m-d"));
         });
     }
 }
