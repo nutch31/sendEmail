@@ -8,7 +8,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Mail;
-use App\Notification;
 
 class NotificationEmail implements ShouldQueue
 {
@@ -37,17 +36,17 @@ class NotificationEmail implements ShouldQueue
     public function __construct($data)
     {
         //
-        $this->name   = $data->name;
-        $this->email_from   = $data->email_from;
-        $this->email        = $data->email;
-        $this->email_cc     = $data->email_cc;
-        $this->email_bcc    = $data->email_bcc;
-        $this->subject_name    = $data->subject_name;
-        $this->campaign_name    = $data->campaign_name;
-        $this->channel_name    = $data->channel_name;
-        $this->issue    = $data->issue;
-        $this->link_campaign    = $data->link_campaign;
-        $this->link_channel    = $data->link_channel;
+        $this->name   = $data->get('name');
+        $this->email_from   = $data->get('email_from');
+        $this->email        = $data->get('email');
+        $this->email_cc     = $data->get('email_cc');
+        $this->email_bcc    = $data->get('email_bcc');
+        $this->subject_name    = $data->get('subject_name');
+        $this->campaign_name    = $data->get('campaign_name');
+        $this->channel_name    = $data->get('channel_name');
+        $this->issue    = $data->get('issue');
+        $this->link_campaign    = $data->get('link_campaign');
+        $this->link_channel    = $data->get('link_channel');
     }
 
     /**
@@ -58,6 +57,7 @@ class NotificationEmail implements ShouldQueue
     public function handle()
     {
         //
+
         $data = [
             'name' => $this->name,
             'email_from' => $this->email_from,
