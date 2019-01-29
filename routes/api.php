@@ -21,3 +21,4 @@ Route::get('/index', 'SendDailyEmailController@index');
 Route::post('/sendEmail', 'SendDailyEmailController@sendEmail');
 Route::post('/notificationEmail', 'NotificationEmailController@notificationEmail');
 Route::post('/summarizeNotificationEmail', 'SummarizeNotificationEmailController@summarizeNotificationEmail');
+Route::post('/verifyLeadsEveryCampaignEmail', 'VerifyLeadsEveryCampaignEmailController@verifyLeadsEveryCampaignEmail');
