@@ -17,7 +17,7 @@
                                 <th>Hero Name</th>
                                 <th>Department</th>
                                 <th>Total Media Channels needed <br> to be filled in (Channel)</th>
-                                <th>Total Media Channels haven't <br> been filled in (Channel)</th>
+                                <th>Total Media Channels haven't <br> been filled in for current cycle (Channel)</th>
                                 <th>Total Media Channels haven't <br> been filled in (Percent)</th>
                             </tr>
 
