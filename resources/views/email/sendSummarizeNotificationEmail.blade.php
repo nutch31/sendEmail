@@ -16,9 +16,9 @@
                             <tr style="background-color:#F69022;color:white;font-size:10pt">
                                 <td>Hero Name</td>
                                 <td>Department</td>
-                                <td>Total Channel Cycle</td>
-                                <td>Total No Channel Cycle</td>
-                                <td>No Enter Cycle (Percent)</td>
+                                <td>Total Media Channels needed to be filled in (Channel)</td>
+                                <td>Total Media Channels haven't been filled in (Channel)</td>
+                                <td>Total Media Channels haven't been filled in (Percent)</td>
                             </tr>
 
                             @foreach($hero_name as $key => $name)
