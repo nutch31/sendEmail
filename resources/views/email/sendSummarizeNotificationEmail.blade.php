@@ -14,11 +14,11 @@
                     <p>
                         <table width="80%" border="1" cellspacing="0" cellpadding="0">
                             <tr style="background-color:#F69022;color:white;font-size:10pt">
-                                <td>Hero Name</td>
-                                <td>Department</td>
-                                <td>Total Media Channels needed to be filled in (Channel)</td>
-                                <td>Total Media Channels haven't been filled in (Channel)</td>
-                                <td>Total Media Channels haven't been filled in (Percent)</td>
+                                <th>Hero Name</th>
+                                <th>Department</th>
+                                <th>Total Media Channels needed <br> to be filled in (Channel)</th>
+                                <th>Total Media Channels haven't <br> been filled in (Channel)</th>
+                                <th>Total Media Channels haven't <br> been filled in (Percent)</th>
                             </tr>
 
                             @foreach($hero_name as $key => $name)
